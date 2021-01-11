@@ -18,4 +18,9 @@ public class SController {
     public List<S> findAll(){
         return sService.findAll();
     }
+
+    @RequestMapping("/hello")
+    public String hello(){
+        return "hello";
+    }
 }

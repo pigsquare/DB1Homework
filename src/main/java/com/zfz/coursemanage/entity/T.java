@@ -7,7 +7,7 @@ public class T {
     private String tno;
     private String tname;
     private String tdept;
-    private String sex;
-    private Integer age;
+    private String tclass;
+    private String logn;
     private String pswd;
 }
