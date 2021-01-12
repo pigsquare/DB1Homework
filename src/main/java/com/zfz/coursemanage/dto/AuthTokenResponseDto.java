@@ -1,6 +1,7 @@
 package com.zfz.coursemanage.dto;
 
 import com.zfz.coursemanage.entity.S;
+import com.zfz.coursemanage.entity.T;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -17,4 +18,5 @@ public class AuthTokenResponseDto implements Serializable {
     private Long expiration;
 
     private S s;
+    private T t;
 }
