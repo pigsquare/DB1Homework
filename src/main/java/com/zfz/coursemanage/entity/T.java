@@ -1,6 +1,7 @@
 package com.zfz.coursemanage.entity;
 
 import lombok.Data;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Data
 public class T {
@@ -9,5 +10,6 @@ public class T {
     private String tdept;
     private String tclass;
     private String logn;
+    @JsonIgnore
     private String pswd;
 }

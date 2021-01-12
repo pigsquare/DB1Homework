@@ -1,5 +1,6 @@
 package com.zfz.coursemanage.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Data
@@ -10,5 +11,6 @@ public class S {
     private Integer age;
     private String sdept;
     private String logn;
+    @JsonIgnore
     private String pswd;
 }
