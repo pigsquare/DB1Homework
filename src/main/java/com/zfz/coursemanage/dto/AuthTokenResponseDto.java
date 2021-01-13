@@ -17,6 +17,9 @@ public class AuthTokenResponseDto implements Serializable {
     @NotNull
     private Long expiration;
 
-    private S s;
-    private T t;
+    @NotNull
+    private String name;
+
+    @NotNull
+    private String id;
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("sService")
-public class SServiceimpl implements SService {
+public class SServiceImpl implements SService {
 
     @Autowired
     private SMapper sMapper;
