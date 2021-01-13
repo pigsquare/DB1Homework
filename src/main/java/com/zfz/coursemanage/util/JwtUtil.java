@@ -1,9 +1,6 @@
 package com.zfz.coursemanage.util;
 
-
-import com.zfz.coursemanage.entity.Admin;
-import com.zfz.coursemanage.entity.S;
-import com.zfz.coursemanage.entity.T;
+import com.zfz.coursemanage.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -50,22 +47,10 @@ public class JwtUtil {
         return expiration.before(new Date());
     }
 
-    public String generateToken(S user) {
+    public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("role", "s");
-        return doGenerateToken(claims, user.getSno());
-    }
-
-    public String generateToken(T user) {
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("role", "t");
-        return doGenerateToken(claims, user.getTno());
-    }
-
-    public String generateToken(Admin user) {
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("role", "a");
-        return doGenerateToken(claims, user.getId());
+        claims.put("role", user.getRole().toString());
+        return doGenerateToken(claims, user.getUsername());
     }
 
     private String doGenerateToken(Map<String, Object> claims, String id) {
