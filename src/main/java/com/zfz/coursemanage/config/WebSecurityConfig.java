@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -61,7 +62,13 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("test").permitAll()
                 .anyRequest().authenticated();
 
-        //httpSecurity
-        //        .addFilterBefore(auth)
+        httpSecurity
+                // JWT权限认证
+                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
+
+        httpSecurity
+                // 缓存头
+                .headers()
+                .cacheControl();
     }
 }
