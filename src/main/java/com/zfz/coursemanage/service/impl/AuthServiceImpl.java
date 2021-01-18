@@ -9,6 +9,8 @@ import com.zfz.coursemanage.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -47,11 +49,16 @@ public class AuthServiceImpl implements AuthService {
             User user=(User)authentication.getPrincipal();
             String jwtToken=jwtUtil.generateToken(user);
             return new AuthTokenResponseDto(jwtToken, jwtUtil.getExpirationDateFromToken(jwtToken).getTime(), user.getName(),user.getUsername(),user.getRole());
+        } catch (DisabledException e) {
+            throw new AuthException("你的账号被禁止登录！");
+        } catch (BadCredentialsException e) {
+            throw new AuthException("用户名或密码错误！");
         } catch (AuthenticationException e) {
             e.printStackTrace();
+            throw new AuthException("无法登录！");
         }
 
-        return null;
+        //return null;
     }
 
 }

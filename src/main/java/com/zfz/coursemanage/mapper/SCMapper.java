@@ -16,4 +16,10 @@ public interface SCMapper {
 
     @Select("SELECT * FROM SC WHERE cno=#{cno}")
     List<SC> findByCno(String cno);
+
+    @Select("SELECT * FROM SC WHERE sno=#{sno} AND grade IS NULL")
+    List<SC> findUngradedCBySno(String sno);
+
+    @Select("SELECT * FROM SC WHERE sno=#{sno} AND grade IS NOT NULL")
+    List<SC> findGradedCBySno(String sno);
 }

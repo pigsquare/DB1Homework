@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class AuthException extends RuntimeException{
-    public AuthException(String msg){
-        super(msg);
+    public AuthException(String message){
+        super(message);
     }
 }

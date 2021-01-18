@@ -31,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             log.info("Admin logged in....");
             user.setName(admin.getName());
             user.setUsername(admin.getId());
-            user.setPassword(admin.getPswd());
+            user.setPassword(admin.getPassword());
             user.setRole(RoleEnum.ROLE_A);
             return user;
         }
