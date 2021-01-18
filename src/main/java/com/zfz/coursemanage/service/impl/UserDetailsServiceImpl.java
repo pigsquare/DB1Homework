@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             user.setName(admin.getName());
             user.setUsername(admin.getId());
             user.setPassword(admin.getPswd());
-            user.setRole(RoleEnum.a);
+            user.setRole(RoleEnum.ROLE_A);
             return user;
         }
         List<T> ts=userMapper.findTByName(s);
@@ -41,7 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             user.setUsername(t.getLogn());
             user.setPassword(t.getPswd());
             user.setName(t.getTname());
-            user.setRole(RoleEnum.t);
+            user.setRole(RoleEnum.ROLE_T);
             return user;
         }
 
@@ -51,7 +51,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             user.setUsername(stu.getLogn());
             user.setPassword(stu.getPswd());
             user.setName(stu.getSname());
-            user.setRole(RoleEnum.s);
+            user.setRole(RoleEnum.ROLE_S);
             return user;
         }
 

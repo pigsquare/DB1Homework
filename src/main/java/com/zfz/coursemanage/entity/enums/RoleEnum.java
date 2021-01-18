@@ -1,5 +1,5 @@
 package com.zfz.coursemanage.entity.enums;
 
 public enum RoleEnum {
-    a,s,t
+    ROLE_A,ROLE_S,ROLE_T
 }
