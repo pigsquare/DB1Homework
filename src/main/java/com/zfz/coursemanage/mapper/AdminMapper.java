@@ -13,7 +13,7 @@ public interface AdminMapper {
     @Insert("INSERT INTO admin values(#{id},#{name},#{password})")
     boolean insertAdmin(Admin admin);
 
-    @Update("UPDETE admin SET name=#{name}, password=#{password} WHERE id=#{id}")
+    @Update("UPDATE admin SET name=#{name}, password=#{password} WHERE id=#{id}")
     boolean updateById(Admin admin);
 
     @Delete("DELETE FROM admin WHERE id=#{id}")

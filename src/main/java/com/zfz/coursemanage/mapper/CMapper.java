@@ -12,7 +12,7 @@ public interface CMapper {
     List<C> findAll();
 
     @Select("SELECT * FROM C WHERE cno=#{cno}")
-    List<C> findCByCno(String cno);
+    C findCByCno(String cno);
 
     @Select("SELECT * FROM C WHERE tno=#{tno}")
     List<C> findCByTno(String Tno);

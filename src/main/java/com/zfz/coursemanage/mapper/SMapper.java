@@ -11,5 +11,5 @@ public interface SMapper {
     List<S> findAll();
 
     @Select("SELECT * FROM S WHERE sno=#{sno}")
-    List<S> findSBySno(String sno);
+    S findSBySno(String sno);
 }
