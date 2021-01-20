@@ -1,11 +1,12 @@
 package com.zfz.coursemanage.controller;
 
+import com.zfz.coursemanage.dto.SAddRequestDto;
 import com.zfz.coursemanage.entity.S;
 import com.zfz.coursemanage.service.SService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class SController {
     @Autowired
     private SService sService;
 
-    @RequestMapping("/findAll")
+    @RequestMapping("/findall")
     public List<S> findAll(){
         return sService.findAll();
     }
@@ -24,5 +25,28 @@ public class SController {
     @RequestMapping("/hello")
     public String hello(){
         return "hello";
+    }
+
+    @PreAuthorize("hasAnyRole('T','A')")
+    @DeleteMapping("/delete/{sno}")
+    public ResponseEntity<Object> deleteS(@PathVariable("sno") String sno){
+        return ResponseEntity.ok().body(sService.deleteBySno(sno));
+    }
+
+    @PreAuthorize("hasRole('A')")
+    @PostMapping("/add")
+    public ResponseEntity<Object> addS(@RequestBody SAddRequestDto addRequestDto){
+        return ResponseEntity.ok().body(sService.InsertS(addRequestDto));
+    }
+
+    @PreAuthorize("hasRole('A')")
+    @PostMapping("/update")
+    public ResponseEntity<Object> updateS(@RequestBody SAddRequestDto addRequestDto){
+        return ResponseEntity.ok().body(sService.UpdateS(addRequestDto));
+    }
+
+    @GetMapping("/info/{sno}")
+    public S getOne(@PathVariable("sno") String sno){
+        return sService.findBySno(sno);
     }
 }
