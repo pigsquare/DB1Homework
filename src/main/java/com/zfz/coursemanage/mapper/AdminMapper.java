@@ -10,7 +10,7 @@ public interface AdminMapper {
     @Select("SELECT * FROM admin")
     List<Admin> findAll();
 
-    @Insert("INSERT INTO admin values(#{id},#{name},#{password})")
+    @Insert("INSERT INTO admin VALUES(#{id},#{name},#{password})")
     boolean insertAdmin(Admin admin);
 
     @Update("UPDATE admin SET name=#{name}, password=#{password} WHERE id=#{id}")

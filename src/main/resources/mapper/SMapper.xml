@@ -4,4 +4,10 @@
     <select id="findAll" resultType="S">
         SELECT * FROM s
     </select>
+    <update id="updateBySno">
+        UPDATE s SET sname=#{sname}, sex=#{sex},
+                     age=#{age}, sdept=#{sdept},
+                     logn=#{logn}, pswd=#{pswd}
+        WHERE sno=#{sno}
+    </update>
 </mapper>

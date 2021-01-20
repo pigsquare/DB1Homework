@@ -28,11 +28,13 @@ public class AdminController {
     public ResponseEntity<Object> addAdmin(@RequestBody @Valid AdminAddRequestDto requestDto){
         return adminService.newAdmin(requestDto);
     }
+
     @PreAuthorize("hasRole('A')")
-    @PostMapping("/list")
+    @GetMapping("/list")
     public List<Admin> findAll(){
         return adminService.findAll();
     }
+
     @PreAuthorize("hasRole('A')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteAdmin(@PathVariable("id")String id){

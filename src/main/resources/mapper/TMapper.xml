@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zfz.coursemanage.mapper.TMapper">
+    <select id="findAll" resultType="T">
+        SELECT * FROM t
+    </select>
+    <select id="findByTno" resultType="T">
+        SELECT * FROM t WHERE tno=#{tno}
+    </select>
+    <update id="updateByTno">
+        UPDATE t SET tname=#{tname}, tdept=#{tdept},
+                     tclass=#{tclass}, logn=#{logn},
+                     pswd=#{pswd}
+        WHERE tno=#{tno}
+    </update>
+    <insert id="insertT">
+        INSERT INTO t VALUES (#{tno},#{tname},#{tdept},#{tclass},#{logn},#{pswd})
+    </insert>
+    <delete id="deleteByTno">
+        DELETE FROM T WHERE tno=#{tno}
+    </delete>
+</mapper>
