@@ -1,5 +1,6 @@
 package com.zfz.coursemanage.service;
 
+import com.zfz.coursemanage.dto.ChangePasswordRequestDto;
 import com.zfz.coursemanage.dto.TAddRequestDto;
 import com.zfz.coursemanage.entity.T;
 import org.springframework.http.ResponseEntity;
@@ -12,4 +13,5 @@ public interface TService {
     ResponseEntity<Object> insertT(TAddRequestDto requestDto);
     ResponseEntity<Object> updateT(TAddRequestDto requestDto);
     boolean deleteByTno(String tno);
+    ResponseEntity<Object> changePassword(ChangePasswordRequestDto requestDto);
 }

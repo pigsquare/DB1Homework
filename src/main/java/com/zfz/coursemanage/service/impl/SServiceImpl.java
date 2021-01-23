@@ -1,10 +1,14 @@
 package com.zfz.coursemanage.service.impl;
 
+import com.zfz.coursemanage.dto.ChangePasswordRequestDto;
 import com.zfz.coursemanage.dto.SAddRequestDto;
 import com.zfz.coursemanage.entity.S;
+import com.zfz.coursemanage.exception.ErrorResult;
 import com.zfz.coursemanage.mapper.SMapper;
 import com.zfz.coursemanage.service.SService;
+import com.zfz.coursemanage.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +55,23 @@ public class SServiceImpl implements SService {
     @Override
     public boolean deleteBySno(String sno) {
         return sMapper.deleteBySno(sno);
+    }
+
+    @Override
+    public ResponseEntity<Object> changePassword(ChangePasswordRequestDto requestDto) {
+        try{
+            String sno= UserUtil.getCurrentUserAccount();
+            S s=findBySno(sno);
+            if(s.getPswd().equals(requestDto.getOldPassword())){
+                s.setPswd(requestDto.getNewPassword());
+                sMapper.updateBySno(s);
+                return ResponseEntity.ok().body("password changed");
+            }
+            return ResponseEntity.badRequest().body("password error");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(new ErrorResult(500, "INTERNAL_SERVER_ERROR", "服务器炸了", "/admin/change"),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

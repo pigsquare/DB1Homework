@@ -50,7 +50,7 @@ public class AuthFilter extends OncePerRequestFilter {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.warn("Jwt expired or invalid.");
         }
 
         filterChain.doFilter(request,response);

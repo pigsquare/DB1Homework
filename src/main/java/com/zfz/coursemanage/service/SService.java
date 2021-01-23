@@ -1,5 +1,6 @@
 package com.zfz.coursemanage.service;
 
+import com.zfz.coursemanage.dto.ChangePasswordRequestDto;
 import com.zfz.coursemanage.dto.SAddRequestDto;
 import com.zfz.coursemanage.entity.S;
 import org.springframework.http.ResponseEntity;
@@ -12,4 +13,5 @@ public interface SService {
     ResponseEntity<Object> UpdateS(SAddRequestDto requestDto);
     ResponseEntity<Object> InsertS(SAddRequestDto requestDto);
     boolean deleteBySno(String sno);
+    ResponseEntity<Object> changePassword(ChangePasswordRequestDto requestDto);
 }
