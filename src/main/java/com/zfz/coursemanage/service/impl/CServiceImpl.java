@@ -47,4 +47,20 @@ public class CServiceImpl implements CService {
         String sno=UserUtil.getCurrentUserAccount();
         return cMapper.findGradedC(sno);
     }
+
+    @Override
+    public List<C> findByTno() {
+        String tno=UserUtil.getCurrentUserAccount();
+        return cMapper.findCByTno(tno);
+    }
+
+    @Override
+    public List<C> findByTno(String tno) {
+        return cMapper.findCByTno(tno);
+    }
+
+    @Override
+    public List<C> findAll() {
+        return cMapper.findAll();
+    }
 }

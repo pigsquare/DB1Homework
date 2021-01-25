@@ -3,6 +3,7 @@ package com.zfz.coursemanage.controller;
 import com.zfz.coursemanage.dto.CAddRequestDto;
 import com.zfz.coursemanage.dto.CourseAvailResponseDto;
 import com.zfz.coursemanage.dto.CourseTakenResponseDto;
+import com.zfz.coursemanage.entity.C;
 import com.zfz.coursemanage.service.CService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +41,21 @@ public class CController {
     @GetMapping("/graded")
     public List<CourseTakenResponseDto> findGradedC(){
         return cService.findGradedC();
+    }
+
+    @PreAuthorize("hasRole('T')")
+    @GetMapping("/teach")
+    public List<C> getTeachC(){
+        return cService.findByTno();
+    }
+
+    @GetMapping("/all")
+    public List<C> findAll(){
+        return cService.findAll();
+    }
+
+    @GetMapping("/teacher/{tno}")
+    public List<C> findByTno(@PathVariable String tno){
+        return cService.findByTno(tno);
     }
 }
