@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -36,13 +37,13 @@ public class SController {
 
     @PreAuthorize("hasRole('A')")
     @PostMapping("/add")
-    public ResponseEntity<Object> addS(@RequestBody SAddRequestDto addRequestDto){
+    public ResponseEntity<Object> addS(@RequestBody @Valid SAddRequestDto addRequestDto){
         return ResponseEntity.ok().body(sService.InsertS(addRequestDto));
     }
 
     @PreAuthorize("hasAnyRole('S','A')")
     @PostMapping("/update")
-    public ResponseEntity<Object> updateS(@RequestBody SAddRequestDto addRequestDto){
+    public ResponseEntity<Object> updateS(@RequestBody @Valid SAddRequestDto addRequestDto){
         return ResponseEntity.ok().body(sService.UpdateS(addRequestDto));
     }
 
@@ -53,7 +54,7 @@ public class SController {
 
     @PreAuthorize("hasRole('S')")
     @PostMapping("/changepassword")
-    public ResponseEntity<Object> changePassword(@RequestBody ChangePasswordRequestDto requestDto){
+    public ResponseEntity<Object> changePassword(@RequestBody @Valid ChangePasswordRequestDto requestDto){
         return sService.changePassword(requestDto);
     }
 }

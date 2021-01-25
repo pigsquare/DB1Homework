@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zfz.coursemanage.mapper.CMapper">
+    <insert id="insertC">
+        INSERT INTO c VALUES (#{cno},#{tno},#{cname},#{credit},#{cdept});
+    </insert>
+    <!-->查询未选的课程信息<-->
+    <select id="findAvailC" resultType="CourseAvailResponseDto">
+        SELECT cno,cname,credit,cdept,tname
+        FROM c
+            INNER JOIN t t2 on c.tno = t2.tno
+        WHERE cno NOT IN
+              (SELECT cno FROM sc WHERE sno=#{sno})
+    </select>
+    <!-->查询已选无成绩的课程<-->
+    <select id="findUngradedC" resultType="CourseAvailResponseDto">
+        SELECT sc.cno,cname,credit,cdept,tname
+        FROM sc INNER JOIN c c2 on sc.cno = c2.cno
+                 INNER JOIN t t2 on c2.tno = t2.tno
+        WHERE sno=#{sno} AND grade IS NULL
+    </select>
+    <!-->查询有成绩的课程<-->
+    <select id="findGradedC" resultType="CourseTakenResponseDto">
+        SELECT sc.cno,cname,grade,point
+        FROM sc INNER JOIN c c2 on sc.cno = c2.cno
+        WHERE sno=#{sno} AND grade IS NOT NULL
+    </select>
+</mapper>

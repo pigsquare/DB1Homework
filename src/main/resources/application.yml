@@ -13,7 +13,7 @@ spring:
     show-sql: true
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.zfz.coursemanage.entity
+  type-aliases-package: com.zfz.coursemanage.entity,com.zfz.coursemanage.dto
 jwt:
   expiration: 1800
   secret: FRrdfpafvef435ER7sqFVmlpu8dg%3fcAAqriPNT6h!4rSZQ
