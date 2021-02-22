@@ -73,7 +73,7 @@ public class AdminServiceImpl implements AdminService {
             if(t.getPassword().equals(requestDto.getOldPassword())){
                 t.setPassword(requestDto.getNewPassword());
                 adminMapper.updateById(t);
-                return ResponseEntity.ok().body("password changed");
+                return ResponseEntity.ok().body("{\"res\": \"password changed\"}");
             }
             return ResponseEntity.badRequest().body("password error");
         } catch (Exception e) {

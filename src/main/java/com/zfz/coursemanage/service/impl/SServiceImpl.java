@@ -65,9 +65,9 @@ public class SServiceImpl implements SService {
             if(s.getPswd().equals(requestDto.getOldPassword())){
                 s.setPswd(requestDto.getNewPassword());
                 sMapper.updateBySno(s);
-                return ResponseEntity.ok().body("password changed");
+                return ResponseEntity.ok().body("{\"res\": \"password changed\"}");
             }
-            return ResponseEntity.badRequest().body("password error");
+            return ResponseEntity.badRequest().body("{\"res\": \"password error\"}");
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(new ErrorResult(500, "INTERNAL_SERVER_ERROR", "服务器炸了", "/admin/change"),

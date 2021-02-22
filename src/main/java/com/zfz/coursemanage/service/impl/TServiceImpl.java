@@ -53,7 +53,7 @@ public class TServiceImpl implements TService {
             if(t.getPswd().equals(requestDto.getOldPassword())){
                 t.setPswd(requestDto.getNewPassword());
                 tMapper.updateByTno(t);
-                return ResponseEntity.ok().body("password changed");
+                return ResponseEntity.ok().body("{\"res\": \"password changed\"}");
             }
             return ResponseEntity.badRequest().body("password error");
         } catch (Exception e) {
