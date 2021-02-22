@@ -22,4 +22,10 @@ public interface SCMapper {
 
     @Select("SELECT * FROM SC WHERE sno=#{sno} AND grade IS NOT NULL")
     List<SC> findGradedCBySno(String sno);
+
+    boolean selectCourse(SC sc);
+
+    boolean dropCourse(SC sc);
+
+    boolean gradeSC(SC sc);
 }

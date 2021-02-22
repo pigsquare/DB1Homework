@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zfz.coursemanage.mapper.SCMapper">
+    <insert id="selectCourse">
+        INSERT INTO sc (sno, cno) VALUES (#{sno},#{cno})
+    </insert>
+    <delete id="dropCourse">
+        DELETE FROM sc WHERE sno=#{sno} AND cno=#{cno} AND grade IS NOT NULL
+    </delete>
+    <update id="gradeSC">
+        UPDATE sc SET grade=#{grade}, point=#{point}
+        WHERE sno=#{sno} AND cno=#{cno}
+    </update>
+</mapper>

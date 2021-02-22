@@ -2,6 +2,7 @@ package com.zfz.coursemanage.service;
 
 import com.zfz.coursemanage.dto.AdminAddRequestDto;
 import com.zfz.coursemanage.dto.AdminChangeRequestDto;
+import com.zfz.coursemanage.dto.ChangePasswordRequestDto;
 import com.zfz.coursemanage.entity.Admin;
 import org.springframework.http.ResponseEntity;
 
@@ -13,5 +14,6 @@ public interface AdminService {
     ResponseEntity<Object> newAdmin(@NotNull AdminAddRequestDto addRequestDto);
     List<Admin> findAll();
     boolean deleteById(@NotNull String id);
+    ResponseEntity<Object> changePassword(ChangePasswordRequestDto requestDto);
 
 }

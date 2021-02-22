@@ -2,6 +2,7 @@ package com.zfz.coursemanage.controller;
 
 import com.zfz.coursemanage.dto.AdminAddRequestDto;
 import com.zfz.coursemanage.dto.AdminChangeRequestDto;
+import com.zfz.coursemanage.dto.ChangePasswordRequestDto;
 import com.zfz.coursemanage.entity.Admin;
 import com.zfz.coursemanage.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,11 @@ public class AdminController {
     public ResponseEntity<Void> deleteAdmin(@PathVariable("id")String id){
         adminService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PreAuthorize("hasRole('A')")
+    @PostMapping("/changepassword")
+    public ResponseEntity<Object> changePassword(@RequestBody @Valid ChangePasswordRequestDto requestDto){
+        return adminService.changePassword(requestDto);
     }
 }

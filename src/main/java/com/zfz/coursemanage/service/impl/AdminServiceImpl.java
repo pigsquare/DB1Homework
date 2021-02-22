@@ -2,6 +2,7 @@ package com.zfz.coursemanage.service.impl;
 
 import com.zfz.coursemanage.dto.AdminAddRequestDto;
 import com.zfz.coursemanage.dto.AdminChangeRequestDto;
+import com.zfz.coursemanage.dto.ChangePasswordRequestDto;
 import com.zfz.coursemanage.entity.Admin;
 import com.zfz.coursemanage.exception.ErrorResult;
 import com.zfz.coursemanage.mapper.AdminMapper;
@@ -61,6 +62,25 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public boolean deleteById(@NotNull String id) {
         return adminMapper.deleteById(id);
+    }
+
+    @Override
+    public ResponseEntity<Object> changePassword(ChangePasswordRequestDto requestDto) {
+        try{
+            String id= UserUtil.getCurrentUserAccount();
+            //T t=findByTno(tno);
+            Admin t=adminMapper.findById(id);
+            if(t.getPassword().equals(requestDto.getOldPassword())){
+                t.setPassword(requestDto.getNewPassword());
+                adminMapper.updateById(t);
+                return ResponseEntity.ok().body("password changed");
+            }
+            return ResponseEntity.badRequest().body("password error");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(new ErrorResult(500, "INTERNAL_SERVER_ERROR", "服务器炸了", "/admin/change"),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 
