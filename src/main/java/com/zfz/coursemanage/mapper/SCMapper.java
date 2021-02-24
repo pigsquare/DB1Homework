@@ -1,5 +1,7 @@
 package com.zfz.coursemanage.mapper;
 
+import com.zfz.coursemanage.dto.CourseAvailResponseDto;
+import com.zfz.coursemanage.dto.SCTeacherResponseDto;
 import com.zfz.coursemanage.entity.SC;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -28,4 +30,8 @@ public interface SCMapper {
     boolean dropCourse(SC sc);
 
     boolean gradeSC(SC sc);
+
+    List<SCTeacherResponseDto> getSCTeacher(String cno);
+
+    List<CourseAvailResponseDto> getAvailC(String sno);
 }

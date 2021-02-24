@@ -16,4 +16,7 @@ public interface CService {
     List<C> findByTno();
     List<C> findByTno(String tno);
     List<C> findAll();
+    C findByCno(String cno);
+    ResponseEntity<Object> updateC(CAddRequestDto requestDto);
+    ResponseEntity<Object> delC(String cno);
 }

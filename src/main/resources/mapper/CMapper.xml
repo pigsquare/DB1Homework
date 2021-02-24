@@ -25,4 +25,13 @@
         FROM sc INNER JOIN c c2 on sc.cno = c2.cno
         WHERE sno=#{sno} AND grade IS NOT NULL
     </select>
+
+    <delete id="deleteC">
+        DELETE FROM c WHERE cno=#{cno}
+    </delete>
+
+    <update id="updateC">
+        UPDATE c SET cname=#{cname}, credit=#{credit}, cdept=#{cdept}
+        WHERE cno=#{cno}
+    </update>
 </mapper>

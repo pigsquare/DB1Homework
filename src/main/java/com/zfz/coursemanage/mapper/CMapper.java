@@ -26,4 +26,8 @@ public interface CMapper {
     List<CourseAvailResponseDto> findUngradedC(String sno);
 
     List<CourseTakenResponseDto> findGradedC(String sno);
+
+    boolean deleteC(String cno);
+
+    boolean updateC(C c);
 }

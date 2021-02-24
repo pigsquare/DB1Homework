@@ -58,4 +58,21 @@ public class CController {
     public List<C> findByTno(@PathVariable String tno){
         return cService.findByTno(tno);
     }
+
+    @PreAuthorize("hasRole('T')")
+    @PostMapping("/update")
+    public ResponseEntity<Object> updateC(@RequestBody @Valid CAddRequestDto requestDto){
+        return cService.updateC(requestDto);
+    }
+
+    @PreAuthorize("hasRole('T')")
+    @DeleteMapping("/delete/{cno}")
+    public ResponseEntity<Object> delC(@PathVariable String cno){
+        return  cService.delC(cno);
+    }
+
+    @GetMapping("/info/{cno}")
+    public C findByCno(@PathVariable String cno){
+        return cService.findByCno(cno);
+    }
 }

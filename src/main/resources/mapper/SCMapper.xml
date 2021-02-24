@@ -11,4 +11,9 @@
         UPDATE sc SET grade=#{grade}, point=#{point}
         WHERE sno=#{sno} AND cno=#{cno}
     </update>
+    <select id="getSCTeacher" resultType="SCTeacherResponseDto">
+        SELECT sc.sno, sname, grade, point
+        FROM sc INNER JOIN s s2 on sc.sno = s2.sno
+        WHERE sc.cno=#{cno}
+    </select>
 </mapper>

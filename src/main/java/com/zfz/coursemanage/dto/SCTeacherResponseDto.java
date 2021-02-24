@@ -2,11 +2,11 @@ package com.zfz.coursemanage.dto;
 
 import lombok.Data;
 
+
 @Data
-public class SGradeResponseDto {
-    private String cno;
-    private String cname;
+public class SCTeacherResponseDto {
+    private String sno;
+    private String sname;
     private Integer grade;
     private Double point;
-    private String tname;
 }

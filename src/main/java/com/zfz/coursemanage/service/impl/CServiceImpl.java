@@ -63,4 +63,35 @@ public class CServiceImpl implements CService {
     public List<C> findAll() {
         return cMapper.findAll();
     }
+
+    @Override
+    public C findByCno(String cno) {
+        return cMapper.findCByCno(cno);
+    }
+
+    @Override
+    public ResponseEntity<Object> updateC(CAddRequestDto requestDto) {
+        C c = findByCno(requestDto.getCno());
+        String tno = UserUtil.getCurrentUserAccount();
+        boolean res;
+        if(c.getTno().equals(tno)){
+            c.setCredit(requestDto.getCredit());
+            c.setCname(requestDto.getCname());
+            c.setCdept(requestDto.getCdept());
+            res = cMapper.updateC(c);
+            return ResponseEntity.ok().body(res);
+        }
+        return ResponseEntity.badRequest().body(false);
+    }
+
+    @Override
+    public ResponseEntity<Object> delC(String cno) {
+        C c = findByCno(cno);
+        String tno = UserUtil.getCurrentUserAccount();
+        if(c.getTno().equals(tno)){
+            boolean res = cMapper.deleteC(cno);
+            return ResponseEntity.ok().body(res);
+        }
+        return ResponseEntity.badRequest().body("用户错误");
+    }
 }
