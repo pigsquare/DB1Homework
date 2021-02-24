@@ -21,7 +21,7 @@
     </select>
     <!-->查询有成绩的课程<-->
     <select id="findGradedC" resultType="CourseTakenResponseDto">
-        SELECT sc.cno,cname,grade,point
+        SELECT sc.cno,cname,credit,grade,point
         FROM sc INNER JOIN c c2 on sc.cno = c2.cno
         WHERE sno=#{sno} AND grade IS NOT NULL
     </select>

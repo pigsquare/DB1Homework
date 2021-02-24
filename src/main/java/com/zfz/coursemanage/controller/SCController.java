@@ -26,4 +26,14 @@ public class SCController {
     public boolean gradeStu(@RequestBody @Valid GradeStuRequestDto responseDto){
         return scService.gradeStu(responseDto);
     }
+    @PreAuthorize("hasRole('S')")
+    @PutMapping("/select/{cno}")
+    public boolean selectC(@PathVariable String cno){
+        return scService.selectC(cno);
+    }
+    @PreAuthorize("hasRole('S')")
+    @DeleteMapping("/drop/{cno}")
+    public boolean dropC(@PathVariable String cno){
+        return scService.dropC(cno);
+    }
 }

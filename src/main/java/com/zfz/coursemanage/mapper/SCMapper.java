@@ -27,7 +27,7 @@ public interface SCMapper {
 
     boolean selectCourse(SC sc);
 
-    boolean dropCourse(SC sc);
+    boolean dropCourse(String sno, String cno);
 
     boolean gradeSC(SC sc);
 

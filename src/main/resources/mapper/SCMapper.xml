@@ -5,7 +5,7 @@
         INSERT INTO sc (sno, cno) VALUES (#{sno},#{cno})
     </insert>
     <delete id="dropCourse">
-        DELETE FROM sc WHERE sno=#{sno} AND cno=#{cno} AND grade IS NOT NULL
+        DELETE FROM sc WHERE sno=#{sno} AND cno=#{cno} AND grade IS NULL
     </delete>
     <update id="gradeSC">
         UPDATE sc SET grade=#{grade}, point=#{point}

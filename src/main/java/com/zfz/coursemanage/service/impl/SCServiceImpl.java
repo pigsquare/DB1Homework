@@ -41,7 +41,7 @@ public class SCServiceImpl implements SCService {
         SC sc = new SC();
         sc.setSno(sno);
         sc.setCno(cno);
-        return scMapper.dropCourse(sc);
+        return scMapper.dropCourse(sno, cno);
     }
 
     @Override
