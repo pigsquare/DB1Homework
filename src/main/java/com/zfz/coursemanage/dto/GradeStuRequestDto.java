@@ -12,6 +12,7 @@ public class GradeStuRequestDto {
     @NotBlank
     @NotNull
     private String cno;
+    @NotNull
     @Max(100)
     @Min(0)
     private Integer score;
